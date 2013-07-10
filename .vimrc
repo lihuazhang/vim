@@ -155,6 +155,22 @@
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     endif
 
+    let g:airline_theme='light'
+     " unicode symbols
+     let g:airline_left_sep = '»'
+     let g:airline_left_sep = '▶'
+     let g:airline_right_sep = '«'
+     let g:airline_right_sep = '◀'
+     let g:airline_linecolumn_prefix = '␊ '
+     let g:airline_linecolumn_prefix = '␤ '
+     let g:airline_linecolumn_prefix = '¶ '
+     let g:airline_fugitive_prefix = '⎇ '
+     let g:airline_paste_symbol = 'ρ'
+     let g:airline_paste_symbol = 'Þ'
+     let g:airline_paste_symbol = '∥'
+
+
+
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set nu                          " Line numbers on
