@@ -7,7 +7,6 @@ git clone --recursive https://github.com/lihuazhang/vim.git $endpath
 
 echo "setting up symlinks"
 ln -sf $endpath/.vimrc $HOME/.vimrc
-ln -sf $endpath/.vimrc.bundles $HOME/.vimrc.bundles
 
 ln -sf $endpath/.vim $HOME/.vim
 if [ ! -d $endpath/.vim/bundle ]; then
@@ -22,5 +21,9 @@ fi
 echo "update/install plugins using Vundle"
 system_shell=$SHELL
 export SHELL="/bin/sh"
-vim -u $endpath/.vimrc.bundles +BundleInstall! +BundleClean +qall
+vim -u $endpath/.vimrc +BundleInstall! +BundleClean +qall
 export SHELL=$system_shell
+
+if [ ! -d $endpath/.vim/undofiles ]; then
+    mkdir -p $endpath/.vim/undofiles
+fi
