@@ -94,7 +94,9 @@ filetype plugin indent on     " required!
 "" Settings
 let mapleader = ','
 set background=dark
-colorscheme ir_black
+if filereadable(expand("~/.vim/bundle/flazz/vim-colorschemes/colors/ir_black.vim"))
+  colorscheme ir_black
+endif
 set history=700
 set nu
 syntax on
