@@ -108,6 +108,8 @@ highlight clear SignColumn
 set visualbell
 set mouse=a
 set mousehide
+set autochdir
+autocmd BufEnter * silent! lcd %:p:h
 set viewoptions=folds,options,cursor,unix,slash
 
 ""
