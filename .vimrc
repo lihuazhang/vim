@@ -33,10 +33,6 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'godlygeek/csapprox'
 Bundle 'matchit.zip'
 Bundle 'vim-scripts/restore_view.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'honza/vim-snippets'
-
 ""
 "" Themes and Colors
 ""
@@ -83,9 +79,13 @@ Bundle 'tpope/vim-rails'
 let g:rubycomplete_buffer_loading = 1
 Bundle 'tpope/vim-cucumber'
 Bundle 'quentindecock/vim-cucumber-align-pipes'
+Bundle 'vim-ruby/vim-ruby'
 " Markdown
 Bundle 'tpope/vim-markdown'
+
 " Snippets
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 
 filetype plugin indent on     " required!
@@ -94,7 +94,7 @@ filetype plugin indent on     " required!
 "" Settings
 let mapleader = ','
 set background=dark
-if filereadable(expand("~/.vim/bundle/flazz/vim-colorschemes/colors/ir_black.vim"))
+if filereadable(expand("~/.vim/bundle/vim-colorschemes/colors/ir_black.vim"))
   colorscheme ir_black
 endif
 set history=700
@@ -311,8 +311,6 @@ let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_enable_cursor_hold_i=1
-let g:neocomplcache_disable_auto_complete=1
 
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -357,7 +355,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Enable heavy omni completion.

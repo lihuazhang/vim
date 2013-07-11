@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+rm -rf .vim .viminfo .vimrc
+rm -rf .my-vim
+rm -rf .neocomplcache
+
 endpath="$HOME/.my-vim"
 
 echo "cloning vim"
