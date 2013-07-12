@@ -112,6 +112,12 @@ set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 set viewoptions=folds,options,cursor,unix,slash
 
+" enable setting title
+set title
+" " configure title to look like: Vim /path/to/file
+set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
+
+
 ""
 "" encoding
 ""
@@ -239,7 +245,7 @@ nmap <leader>nt :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen=0
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
@@ -401,3 +407,11 @@ autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWri
 ""
 nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 cmap w!! w !sudo tee % >/dev/null
+" search next/previous -- center in page
+nmap n nzz
+nmap N Nzz
+nmap * *Nzz
+nmap # #nzz
+
+
+
