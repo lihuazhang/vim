@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
@@ -93,7 +93,6 @@ filetype plugin indent on     " required!
 
 
 "" Settings
-
 let mapleader = ','
 set background=dark
 if filereadable(expand("~/.vim/bundle/vim-colorschemes/colors/ir_black.vim"))
@@ -404,7 +403,7 @@ set completeopt-=preview
 ""
 "" Function
 ""
-function! StripTrailingWhitespace()
+function! <SID>StripTrailingWhitespace()
   let _s=@/
   let l = line(".")
   let c = col(".")
@@ -414,7 +413,7 @@ function! StripTrailingWhitespace()
   let @/=_s
   call cursor(l, c)
 endfunction
-autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call <SID>StripTrailingWhitespace()
 
 ""
 "" Key mapping
@@ -426,6 +425,17 @@ nmap n nzz
 nmap N Nzz
 nmap * *Nzz
 nmap # #nzz
+" Trim manually
+nnoremap <silent> <leader>w :call <SID>StripTrailingWhitespace()<CR>
+" check spell
+nmap <silent> <leader>s :set spell!<CR>
+" paste
+nmap <silent> <leader>p :set paste!<CR>
 
-
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
