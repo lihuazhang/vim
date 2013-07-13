@@ -109,8 +109,11 @@ highlight clear SignColumn
 set visualbell
 set mouse=a
 set mousehide
-set autochdir
-autocmd BufEnter * silent! lcd %:p:h
+" Comment out auto change dir
+" which will break the jump function of
+" rails vim
+" set autochdir
+" autocmd BufEnter * silent! lcd %:p:h
 
 " Remove restore_view, since mkview will break rails vim in mac
 " When editing a file, always jump to the last known cursor position.
@@ -413,7 +416,21 @@ function! <SID>StripTrailingWhitespace()
   let @/=_s
   call cursor(l, c)
 endfunction
-autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call <SID>StripTrailingWhitespace()
+
+autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml,cucumber,ruby autocmd BufWritePre <buffer> call <SID>StripTrailingWhitespace()
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
 
 ""
 "" Key mapping
@@ -438,4 +455,5 @@ if exists(":Tabularize")
   nmap <Leader>a: :Tabularize /:\zs<CR>
   vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
+
 
