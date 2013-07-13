@@ -32,7 +32,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'godlygeek/csapprox'
 Bundle 'matchit.zip'
-Bundle 'vim-scripts/restore_view.vim'
+Bundle 'terryma/vim-multiple-cursors'
+
 ""
 "" Themes and Colors
 ""
@@ -92,6 +93,7 @@ filetype plugin indent on     " required!
 
 
 "" Settings
+
 let mapleader = ','
 set background=dark
 if filereadable(expand("~/.vim/bundle/vim-colorschemes/colors/ir_black.vim"))
@@ -110,7 +112,19 @@ set mouse=a
 set mousehide
 set autochdir
 autocmd BufEnter * silent! lcd %:p:h
-set viewoptions=folds,options,cursor,unix,slash
+
+" Remove restore_view, since mkview will break rails vim in mac
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+
 
 " enable setting title
 set title
