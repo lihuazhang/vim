@@ -464,4 +464,6 @@ nmap <leader>y :YRShow<cr>
 let g:yankring_paste_n_bkey = ''
 let g:yankring_paste_n_akey = ''
 let g:yankring_paste_v_key = ''
+let g:yankring_replace_n_pkey = '<leader>['
+let g:yankring_replace_n_nkey = '<leader>]'
 
