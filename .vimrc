@@ -33,6 +33,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'godlygeek/csapprox'
 Bundle 'matchit.zip'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'vim-scripts/YankRing.vim'
 
 ""
 "" Themes and Colors
@@ -455,4 +456,14 @@ if exists(":Tabularize")
   nmap <Leader>a: :Tabularize /:\zs<CR>
   vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
+
+" ,y to show the yankring
+nmap <leader>y :YRShow<cr>
+" Disable yankring for regular p/P. This preserves vim's normal behavior, but
+" I can still use C-p/C-n to cycle through yankring.
+let g:yankring_paste_n_bkey = ''
+let g:yankring_paste_n_akey = ''
+let g:yankring_paste_v_key = ''
+let g:yankring_replace_n_pkey = '<leader>['
+let g:yankring_replace_n_nkey = '<leader>]'
 
