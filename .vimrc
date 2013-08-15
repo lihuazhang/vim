@@ -49,8 +49,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'junegunn/vim-easy-align'
+
 if executable('ctags')
   Bundle 'majutsushi/tagbar'
 endif
@@ -199,7 +200,7 @@ set autoindent
 ""
 "" Whitespace and Tab
 ""
-set nowrap
+set wrap
 set smarttab
 set tabstop=2
 set shiftwidth=2
@@ -435,9 +436,26 @@ function! s:align()
   endif
 endfunction
 
+function! GFM()
+  let langs = ['ruby', 'yaml', 'vim', 'c']
+
+  for lang in langs
+    unlet b:current_syntax
+    silent! exec printf("syntax include @%s syntax/%s.vim", lang, lang)
+    exec printf("syntax region %sSnip matchgroup=Snip start='```%s' end='```' contains=@%s",
+                \ lang, lang, lang)
+  endfor
+  let b:current_syntax='mkd'
+
+  syntax sync fromstart
+endfunction
+
 ""
 "" Key mapping
 ""
+
+vnoremap <silent> <Enter> :EasyAlign<cr>
+
 nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 cmap w!! w !sudo tee % >/dev/null
 " search next/previous -- center in page
@@ -451,13 +469,6 @@ nnoremap <silent> <leader>w :call <SID>StripTrailingWhitespace()<CR>
 nmap <silent> <leader>s :set spell!<CR>
 " paste
 nmap <silent> <leader>p :set paste!<CR>
-
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
 
 " ,y to show the yankring
 nmap <leader>y :YRShow<cr>
