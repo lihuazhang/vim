@@ -34,6 +34,7 @@ Bundle 'godlygeek/csapprox'
 Bundle 'matchit.zip'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'vim-scripts/YankRing.vim'
+Bundle 'godlygeek/tabular'
 
 ""
 "" Themes and Colors
@@ -46,7 +47,6 @@ Bundle 'bling/vim-airline'
 ""
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'tomtom/tcomment_vim'
@@ -241,6 +241,7 @@ set wildignore+=*.swp,*~,._*,*.bak
 set t_Co=256
 let g:airline_powerline_fonts=1
 let g:airline_theme='light'
+
 " unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
@@ -249,10 +250,12 @@ let g:airline_right_sep = '◀'
 let g:airline_linecolumn_prefix = '␊ '
 let g:airline_linecolumn_prefix = '␤ '
 let g:airline_linecolumn_prefix = '¶ '
-let g:airline_fugitive_prefix = '⎇ '
+let g:airline_branch_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
 let g:airline_paste_symbol = 'Þ'
 let g:airline_paste_symbol = '∥'
+let g:airline_whitespace_symbol = 'Ξ'
+
 
 "" NerdTree
 ""
@@ -295,9 +298,6 @@ else
         \ 'fallback': 'find %s -type f'
         \ }
 endif
-
-"" gitgutter
-let g:gitgutter_eager = 0
 
 "" TagBar
 ""

@@ -32,6 +32,4 @@ if [ ! -d $endpath/.vim/undofiles ]; then
     mkdir -p $endpath/.vim/undofiles
 fi
 
-if [ ! -d $endpath/.vim/yankring]; then
-    mkdir -p $endpath/.vim/yankring
-fi
+mkdir -p $endpath/.vim/yankring
