@@ -470,3 +470,4 @@ nmap <silent> <leader>s :set spell!<CR>
 " paste
 nmap <silent> <leader>p :set paste!<CR>
 
+let g:neocomplcache_force_overwrite_completefunc = 1
