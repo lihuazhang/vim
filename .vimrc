@@ -88,11 +88,10 @@ Bundle 'tpope/vim-markdown'
 " Snippets
 Bundle 'Shougo/neocomplete'
 Bundle 'Shougo/neosnippet'
-Bundle 'honza/vim-snippets'
 Bundle 'Shougo/neosnippet-snippets'
+Bundle 'honza/vim-snippets'
 
 filetype plugin indent on     " required!
-
 
 "" Settings
 let mapleader = ','
@@ -411,8 +410,6 @@ let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-
-
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
@@ -493,6 +490,4 @@ nnoremap <silent> <leader>w :call <SID>StripTrailingWhitespace()<CR>
 nmap <silent> <leader>s :set spell!<CR>
 " paste
 nmap <silent> <leader>p :set paste!<CR>
-
-let g:neocomplcache_force_overwrite_completefunc = 1
 
