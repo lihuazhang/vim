@@ -39,7 +39,8 @@ Bundle 'godlygeek/tabular'
 "" Themes and Colors
 ""
 Bundle 'flazz/vim-colorschemes'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 
 ""
 "" Programming
